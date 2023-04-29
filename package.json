@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "package": "tsc && vite build && rm dist.zip && cd dist && zip -r ../dist.zip . && git commit -nam 'update' && git push",
     "preview": "vite preview",
     "test": "vitest",
     "prepare": "husky install"
