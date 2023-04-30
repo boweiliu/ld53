@@ -54,7 +54,7 @@ export function useWindowSize() {
       Math.min(
         window.screen?.height ?? Infinity,
         window.screen?.availHeight ?? Infinity
-      ) - 16 // something ios browser bars
+      ) - 300 // something ios browser bars
     ),
   };
 }
