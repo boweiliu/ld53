@@ -29,6 +29,12 @@ function testSandbox() {
   );
   const orientation = window.screen?.orientation ?? window.orientation;
 
+  window.alert(
+    `document fullscreen${window.document.fullscreenEnabled}webkit fullscreen${
+      (window.document as any).webkitFullscreenEnabled
+    }`
+  );
+
   return {
     windowInnerHeight: window.innerHeight,
     windowScreenHeight: window.screen?.height,
@@ -74,6 +80,8 @@ function Home() {
         backgroundColor: 'red',
         width: '100%',
         height: '100%',
+        top: '0px',
+        left: '0px',
         position: 'absolute',
       }}
     >
