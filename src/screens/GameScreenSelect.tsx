@@ -13,7 +13,9 @@ export function GameScreenSelect(props: {
   return (
     <div>
       Game runs best in fullscreen landscape!{' '}
-      <button type="button">Go fullscreen</button>
+      <button disabled type="button">
+        Go fullscreen
+      </button>
       <br />
       <br />
       Rotate your head now,
