@@ -93,6 +93,7 @@ function GameDebug() {
         get info
       </button>
       <h1>DEBUG</h1>
+      <div style={{ textAlign: 'center' }}>centered text</div>
       <div
         style={{
           maxWidth: '200px',

@@ -33,7 +33,7 @@ function isIframe(): boolean {
   return false;
 }
 
-function isLandscape(): boolean {
+function getIsLandscape(): boolean {
   const height = window.screen?.height;
   const width = window.screen?.width;
   if (height && width && height < width) {
@@ -59,6 +59,10 @@ function isLandscape(): boolean {
  *   - fullscreen, mobile, landscape: not sure, but probably window size would work here.
  */
 export function useWindowSize() {
+  return { getWindowSize, ...getWindowSize() };
+}
+
+export function getWindowSize() {
   const windowSize = { h: window.innerHeight, w: window.innerWidth };
   let screenSize = {
     h: Math.min(
@@ -75,21 +79,26 @@ export function useWindowSize() {
     screenSize = { h: screenSize.w, w: screenSize.h };
   }
 
+  const isLandscape = getIsLandscape();
+
   if (isIframe()) {
-    if (isLandscape()) {
+    if (isLandscape) {
       return {
         width: Math.min(windowSize.w, screenSize.w),
         height: Math.min(windowSize.h, screenSize.h - 64), // ldjam site header
+        isLandscape,
       };
     }
     // window inner height/width doesnt work from inside iframe, so this is close -- for my ios safari, with bars expanded, 693 - 527 = 166, or 693 - 636 = 57
     return {
       width: Math.min(windowSize.w, screenSize.w),
       height: Math.min(windowSize.h, screenSize.h - 64), // minimized mobile address bars
+      isLandscape,
     };
   }
   return {
     width: Math.min(windowSize.w, screenSize.w),
     height: Math.min(windowSize.h, screenSize.h),
+    isLandscape,
   };
 }
