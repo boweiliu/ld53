@@ -24,6 +24,24 @@ function isOrientationRotated() {
   return isRotated;
 }
 
+function isIframe(): boolean {
+  // we're definitely inside a sandboxed iframe
+  if (window.origin === null || window.origin === 'null') {
+    return true;
+  }
+  // not sure, just return false
+  return false;
+}
+
+function isLandscape(): boolean {
+  const height = window.screen?.height;
+  const width = window.screen?.width;
+  if (height && width && height < width) {
+    return true;
+  }
+  return false;
+}
+
 /**
  * Are you running in an iframe (in which case window inner width/height is unhelpful) or ordinary web site (noiframe) or fullscreen?
  * Are you running in desktop or mobile? (mobile has extra addressbar/tabbar toggle state)
@@ -41,36 +59,37 @@ function isOrientationRotated() {
  *   - fullscreen, mobile, landscape: not sure, but probably window size would work here.
  */
 export function useWindowSize() {
-  // window size API  is not rotated, but screen values are
-  if (isOrientationRotated()) {
-    // generally a mobile device
-    return {
-      width: Math.min(
-        window.innerWidth ?? Infinity,
-        window.screen?.height ?? Infinity,
-        window.screen?.availHeight ?? Infinity
-      ),
-      height: Math.min(
-        window.innerHeight ?? Infinity,
-        Math.min(
-          window.screen?.width ?? Infinity,
-          window.screen?.availWidth ?? Infinity
-        ) - 64 // padding for the bar at the top of ldjam website
-      ),
-    };
-  }
-  return {
-    width: Math.min(
-      window.innerWidth ?? Infinity,
+  const windowSize = { h: window.innerHeight, w: window.innerWidth };
+  let screenSize = {
+    h: Math.min(
+      window.screen?.height ?? Infinity,
+      window.screen?.availHeight ?? Infinity
+    ),
+    w: Math.min(
       window.screen?.width ?? Infinity,
       window.screen?.availWidth ?? Infinity
     ),
-    height: Math.min(
-      window.innerHeight ?? Infinity,
-      Math.min(
-        window.screen?.height ?? Infinity,
-        window.screen?.availHeight ?? Infinity
-      ) - 80 // window inner height/width doesnt work from inside iframe, so this is close -- for my ios safari, with bars expanded, 693 - 527 = 166, or 693 - 636 = 57
-    ),
+  };
+  // user has rotated their device, we need to swap the effective width and height
+  if (isOrientationRotated()) {
+    screenSize = { h: screenSize.w, w: screenSize.h };
+  }
+
+  if (isIframe()) {
+    if (isLandscape()) {
+      return {
+        width: Math.min(windowSize.w, screenSize.w),
+        height: Math.min(windowSize.h, screenSize.h - 64), // ldjam site header
+      };
+    }
+    // window inner height/width doesnt work from inside iframe, so this is close -- for my ios safari, with bars expanded, 693 - 527 = 166, or 693 - 636 = 57
+    return {
+      width: Math.min(windowSize.w, screenSize.w),
+      height: Math.min(windowSize.h, screenSize.h - 64), // minimized mobile address bars
+    };
+  }
+  return {
+    width: Math.min(windowSize.w, screenSize.w),
+    height: Math.min(windowSize.h, screenSize.h),
   };
 }
