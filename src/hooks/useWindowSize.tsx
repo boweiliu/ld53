@@ -26,7 +26,7 @@ function isOrientationRotated() {
 
 export function useWindowSize() {
   if (isOrientationRotated()) {
-    // window sizes are not rotated, but screen might be
+    // window size API  is not rotated, but screen values are
     return {
       width: Math.min(
         window.innerWidth ?? Infinity,
@@ -48,8 +48,10 @@ export function useWindowSize() {
     ),
     height: Math.min(
       window.innerHeight ?? Infinity,
-      window.screen?.height ?? Infinity,
-      window.screen?.availHeight ?? Infinity
+      Math.min(
+        window.screen?.height ?? Infinity,
+        window.screen?.availHeight ?? Infinity
+      ) - 64 // padding at the top of ludum dare website
     ),
   };
 }
