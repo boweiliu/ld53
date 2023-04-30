@@ -36,10 +36,17 @@ function isIframe(): boolean {
 function getIsLandscape(): boolean {
   const height = window.screen?.height;
   const width = window.screen?.width;
+  let isLandscape: boolean;
   if (height && width && height < width) {
-    return true;
+    isLandscape = true;
+  } else {
+    isLandscape = false;
   }
-  return false;
+
+  if (isOrientationRotated()) {
+    return !isLandscape;
+  }
+  return isLandscape;
 }
 
 /**
