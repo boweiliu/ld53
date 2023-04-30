@@ -42,6 +42,8 @@ function testSandbox() {
     windowScreenWidth: window.screen?.width,
     windowAvailWidth: window.screen?.availWidth,
     orientation: [orientation?.type, orientation?.angle, orientation],
+    lorigin: window.location?.origin,
+    origin: window.origin,
   };
 }
 
@@ -75,16 +77,14 @@ function GameDebug() {
   return (
     <div
       ref={ref}
-      style={
-        {
-          // backgroundColor: 'red',
-          // width: '100%',
-          // height: '100%',
-          // top: '0px',
-          // left: '0px',
-          // position: 'absolute',
-        }
-      }
+      style={{
+        backgroundColor: 'red',
+        // width: '100%',
+        // height: '100%',
+        // top: '0px',
+        // left: '0px',
+        // position: 'absolute',
+      }}
     >
       <button type="button" onClick={() => makeFullscreen()}>
         fullscreen
