@@ -22,6 +22,15 @@ This setup includes:
 - [﻿https://www.phind.com/search?cache=c1fa81da-d38a-4e29-b774-f4f7b7df947e](https://www.phind.com/search?cache=c1fa81da-d38a-4e29-b774-f4f7b7df947e) 
 - 
 
+## BUGS
+
+For hosting on ldjam.com, was getting the following issue
+
+https://stackoverflow.com/questions/66808918/content-security-policy-meta-tag-within-sandboxed-iframe-not-working-in-safari
+
+Refused to load <asset/*.js> because it appears in neither the script-src directive nor the default-src directive of the Content Security Policy.
+
+workaround: vite config to export a single fat html. https://github.com/vitejs/vite/issues/621
 
 
 <!--- Eraser file: https://app.eraser.io/workspace/8RJZpgQQjbfajWeMH7Vv --->
