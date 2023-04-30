@@ -20,6 +20,7 @@ function NotFound() {
         allowFullScreen
         src={`${origin}/index.html`}
       />
+      <div style={{ height: '533px' }}>spacer</div>
       <h2>blah blah</h2>
       <h2>blah blah</h2>
       <h2>blah blah</h2>
