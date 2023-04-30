@@ -1,8 +1,14 @@
-import { describe, it } from 'vitest';
+import { describe, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { WrappedApp, App } from './App';
+
+global.fetch = vi.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve({}),
+  } as any)
+);
 
 describe('App', () => {
   it('Renders hello world', () => {
