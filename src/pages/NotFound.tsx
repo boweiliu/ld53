@@ -20,6 +20,9 @@ function NotFound() {
         allowFullScreen
         src={`${origin}/index.html`}
       />
+      <h2>blah blah</h2>
+      <h2>blah blah</h2>
+      <h2>blah blah</h2>
     </>
   );
 }
