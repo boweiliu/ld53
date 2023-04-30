@@ -45,7 +45,7 @@ function testSandbox() {
   };
 }
 
-function Home() {
+function GameDebug() {
   console.log('hi there!');
 
   const [summary, setSummary] = useState<string>('');
@@ -104,4 +104,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default GameDebug;
