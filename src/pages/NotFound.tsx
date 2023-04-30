@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 
 function NotFound() {
+  const origin = window.location.origin || 'http://localhost:5173';
+
   return (
     <>
       <h1>Not Found</h1>
@@ -10,7 +12,7 @@ function NotFound() {
         style={{ width: '948px', height: '533px' }}
         sandbox="allow-scripts allow-pointer-lock"
         allowFullScreen
-        src="http://localhost:5173/index.html"
+        src={`${origin}/index.html`}
       />
     </>
   );
