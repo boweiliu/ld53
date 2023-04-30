@@ -1,4 +1,5 @@
 import { useRef, useCallback, useState } from 'react';
+import util from 'util';
 
 function testSandbox() {
   // fetch? no - is blocked
@@ -33,7 +34,10 @@ function testSandbox() {
     windowInnerWidth: window.innerWidth,
     windowScreenWidth: window.screen.width,
     windowAvailWidth: window.screen.availWidth,
-    orientation: window.screen.orientation,
+    orientation: [
+      window.screen.orientation.type,
+      window.screen.orientation.angle,
+    ],
   };
 }
 
