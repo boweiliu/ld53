@@ -10,6 +10,7 @@ function NotFound() {
       <iframe
         title="nest-test"
         style={{
+          border: '0px',
           width: '948px',
           height: '533px',
           position: 'absolute',
