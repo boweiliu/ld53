@@ -1,6 +1,10 @@
 function Home() {
   console.log('hi there!');
-  return <h1>Hello World</h1>;
+  return (
+    <div style={{ backgroundColor: 'red' }}>
+      <h1>Hello World</h1>
+    </div>
+  );
 }
 
 export default Home;
