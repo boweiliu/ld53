@@ -1,9 +1,9 @@
 .rotationContainer {
   /* top: 0; */
   /* left: 0; */
-  background-color: brown;
+  background-color: #222222;
   position: absolute;
-  border: solid 5px pink;
+  border: solid 6px #888888;
 }
 
 .rotate {
