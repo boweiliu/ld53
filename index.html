@@ -8,6 +8,10 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>window.addEventListener('securitypolicyviolation', function(event) {
+          console.log('CSP:', event.originalPolicy);
+        }); console.log('added event listener from inline script')
+    </script>
     <script type="module" src="/src/main.tsx"></script>
     <script>eval(';console.log("from inline script");')</script>
     <script src='https://ldjam.com/-/all.min.js'></script>
