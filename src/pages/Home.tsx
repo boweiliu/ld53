@@ -1,3 +1,5 @@
+import { useRef, useEffect } from 'react';
+
 function testSandbox() {
   // fetch? no - is blocked
   try {
@@ -17,6 +19,13 @@ function testSandbox() {
   }
 
   console.log('window sizes:', window.innerHeight, window.innerWidth);
+  console.log(
+    'screen sizes:',
+    window.screen.height,
+    window.screen.width,
+    window.screen.availHeight,
+    window.screen.availWidth
+  );
 }
 
 function Home() {
@@ -24,8 +33,31 @@ function Home() {
 
   testSandbox();
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  // hmmm: Request for fullscreen was denied because Element.requestFullscreen() was not called from inside a short running user-generated event handler.
+  useEffect(() => {
+    let alreadyFullscreened = false;
+    const interval = setInterval(() => {
+      if (ref.current && !alreadyFullscreened) {
+        const el = ref.current;
+        el.requestFullscreen?.()
+          .then(() => {
+            console.log('am fullscreen');
+            alreadyFullscreened = true;
+          })
+          .catch((e) => {
+            console.log(e, e.stack);
+          });
+      }
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [ref]);
+
   return (
     <div
+      ref={ref}
       style={{
         backgroundColor: 'red',
         width: '100%',
