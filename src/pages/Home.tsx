@@ -11,6 +11,18 @@ function Home() {
     >
       <GameScreenSelect />
       <div style={{ textAlign: 'center' }}> test center </div>
+      <iframe
+        title="nest-test"
+        style={{
+          border: '0px',
+          width: '100px',
+          height: '100px',
+          left: 0,
+        }}
+        sandbox="allow-scripts allow-pointer-lock"
+        allowFullScreen
+        src="https://www.example.com/index.html"
+      />
     </div>
   );
 }
