@@ -22,6 +22,9 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 0,
     'no-console': 'off',
+    'import/extensions': 'off',
+    'no-alert': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'import/prefer-default-export': 'off',
   },
 };
