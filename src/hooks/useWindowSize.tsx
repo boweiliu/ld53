@@ -91,7 +91,7 @@ export function getWindowSize() {
   if (isIframe()) {
     if (isLandscape) {
       return {
-        width: Math.min(windowSize.w, screenSize.w),
+        width: Math.min(windowSize.w, screenSize.w - 76), // ios safari landscape mode padding = 693 - 617 = 76
         height: Math.min(windowSize.h, screenSize.h - 64), // ldjam site header
         isLandscape,
       };
