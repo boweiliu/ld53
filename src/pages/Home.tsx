@@ -36,7 +36,7 @@ function testSandbox() {
     windowInnerWidth: window.innerWidth,
     windowScreenWidth: window.screen?.width,
     windowAvailWidth: window.screen?.availWidth,
-    orientation: [orientation?.type, orientation?.angle],
+    orientation: [orientation?.type, orientation?.angle, orientation],
   };
 }
 
