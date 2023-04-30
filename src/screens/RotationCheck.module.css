@@ -13,3 +13,7 @@
   -o-transform: rotate(-90deg); /* Opera */
   transform: rotate(-90deg);
 }
+
+.container {
+  background-color: #242;
+}

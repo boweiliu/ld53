@@ -29,7 +29,6 @@ function Home() {
           setWindowSize(newWindowSize);
         }}
       />
-      <GameDebug />
     </div>
   );
 }
