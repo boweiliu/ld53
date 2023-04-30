@@ -9,7 +9,12 @@ function NotFound() {
       <Link to="/">GO HOME</Link>
       <iframe
         title="nest-test"
-        style={{ width: '948px', height: '533px' }}
+        style={{
+          width: '948px',
+          height: '533px',
+          position: 'absolute',
+          left: 0,
+        }}
         sandbox="allow-scripts allow-pointer-lock"
         allowFullScreen
         src={`${origin}/index.html`}
