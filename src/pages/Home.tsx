@@ -1,5 +1,5 @@
 import { GameScreenSelect } from '@/screens/GameScreenSelect';
-import GameDebug from '@/pages/Game';
+import GameDebug from '@/pages/GameDebug';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import styles from './Home.module.css';
 

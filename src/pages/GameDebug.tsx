@@ -92,7 +92,7 @@ function GameDebug() {
       <button type="button" onClick={() => getInfo()}>
         get info
       </button>
-      <h1>Hello World</h1>
+      <h1>DEBUG</h1>
       <div
         style={{
           maxWidth: '200px',
