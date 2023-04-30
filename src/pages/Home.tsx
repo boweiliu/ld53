@@ -15,6 +15,8 @@ function testSandbox() {
   } catch (e: unknown) {
     console.log(e, (e as Error)?.stack);
   }
+
+  console.log('window sizes:', window.innerHeight, window.innerWidth);
 }
 
 function Home() {
@@ -23,7 +25,14 @@ function Home() {
   testSandbox();
 
   return (
-    <div style={{ backgroundColor: 'red', width: '100%', height: '100%' }}>
+    <div
+      style={{
+        backgroundColor: 'red',
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+      }}
+    >
       <h1>Hello World</h1>
     </div>
   );
