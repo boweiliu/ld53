@@ -27,17 +27,16 @@ function testSandbox() {
     window.screen.availHeight,
     window.screen.availWidth
   );
+  const orientation = window.screen?.orientation ?? window.orientation;
+
   return {
     windowInnerHeight: window.innerHeight,
-    windowScreenHeight: window.screen.height,
-    windowAvailHeight: window.screen.availHeight,
+    windowScreenHeight: window.screen?.height,
+    windowAvailHeight: window.screen?.availHeight,
     windowInnerWidth: window.innerWidth,
-    windowScreenWidth: window.screen.width,
-    windowAvailWidth: window.screen.availWidth,
-    orientation: [
-      window.screen.orientation.type,
-      window.screen.orientation.angle,
-    ],
+    windowScreenWidth: window.screen?.width,
+    windowAvailWidth: window.screen?.availWidth,
+    orientation: [orientation?.type, orientation?.angle],
   };
 }
 
