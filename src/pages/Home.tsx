@@ -8,6 +8,7 @@ function testSandbox() {
     console.log(e, (e as Error)?.stack);
   }
 
+  // all storage is blocked too
   try {
     localStorage.setItem('test', 'foo');
     console.log('got local storage', localStorage.getItem('test'));
@@ -22,7 +23,7 @@ function Home() {
   testSandbox();
 
   return (
-    <div style={{ backgroundColor: 'red' }}>
+    <div style={{ backgroundColor: 'red', width: '100%', height: '100%' }}>
       <h1>Hello World</h1>
     </div>
   );
