@@ -54,7 +54,7 @@ export function useWindowSize() {
       Math.min(
         window.screen?.height ?? Infinity,
         window.screen?.availHeight ?? Infinity
-      ) - 300 // something ios browser bars
+      ) - 180 // window inner height/width doesnt work from inside iframe, so this is close -- for my ios safari, with bars expanded, 693 - 527 = 166
     ),
   };
 }
