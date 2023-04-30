@@ -25,8 +25,9 @@ function isOrientationRotated() {
 }
 
 export function useWindowSize() {
+  // window size API  is not rotated, but screen values are
   if (isOrientationRotated()) {
-    // window size API  is not rotated, but screen values are
+    // generally a mobile device
     return {
       width: Math.min(
         window.innerWidth ?? Infinity,
@@ -35,8 +36,10 @@ export function useWindowSize() {
       ),
       height: Math.min(
         window.innerHeight ?? Infinity,
-        window.screen?.width ?? Infinity,
-        window.screen?.availWidth ?? Infinity
+        Math.min(
+          window.screen?.width ?? Infinity,
+          window.screen?.availWidth ?? Infinity
+        ) - 64 // padding for the bar at the top of ldjam website
       ),
     };
   }
@@ -51,7 +54,7 @@ export function useWindowSize() {
       Math.min(
         window.screen?.height ?? Infinity,
         window.screen?.availHeight ?? Infinity
-      ) - 64 // padding at the top of ludum dare website
+      ) - 16 // something ios browser bars
     ),
   };
 }
