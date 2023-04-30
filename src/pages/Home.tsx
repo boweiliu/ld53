@@ -58,6 +58,7 @@ function Home() {
         })
         .catch((e) => {
           console.log(e, e.stack);
+          window.alert(JSON.stringify([e, e.stack]));
         });
     }
   }, [ref]);
