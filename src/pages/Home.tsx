@@ -10,6 +10,7 @@ function Home() {
       style={{ width: `${width}px`, height: `${height}px` }}
     >
       <GameScreenSelect />
+      <div style={{ textAlign: 'center' }}>center</div>
     </div>
   );
 }
