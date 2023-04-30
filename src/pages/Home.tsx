@@ -1,4 +1,4 @@
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useState } from 'react';
 
 function testSandbox() {
   // fetch? no - is blocked
@@ -26,12 +26,24 @@ function testSandbox() {
     window.screen.availHeight,
     window.screen.availWidth
   );
+  return {
+    windowInnerHeight: window.innerHeight,
+    windowScreenHeight: window.screen.height,
+    windowAvailHeight: window.screen.availHeight,
+    windowInnerWidth: window.innerWidth,
+    windowScreenWidth: window.screen.width,
+    windowAvailWidth: window.screen.availWidth,
+  };
 }
 
 function Home() {
   console.log('hi there!');
 
-  testSandbox();
+  const [summary, setSummary] = useState<string>('');
+
+  const getInfo = useCallback(() => {
+    setSummary(JSON.stringify(testSandbox()));
+  }, []);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -63,7 +75,11 @@ function Home() {
       <button type="button" onClick={() => makeFullscreen()}>
         fullscreen
       </button>
+      <button type="button" onClick={() => getInfo()}>
+        get info
+      </button>
       <h1>Hello World</h1>
+      <div>{summary}</div>
     </div>
   );
 }
