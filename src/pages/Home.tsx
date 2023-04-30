@@ -79,7 +79,15 @@ function Home() {
         get info
       </button>
       <h1>Hello World</h1>
-      <div>{summary}</div>
+      <div
+        style={{
+          maxWidth: '200px',
+          width: '200px',
+          overflowWrap: 'break-word',
+        }}
+      >
+        {summary}
+      </div>
     </div>
   );
 }
