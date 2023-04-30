@@ -22,5 +22,6 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 0,
     'no-console': 'off',
+    'import/prefer-default-export': 'off',
   },
 };
