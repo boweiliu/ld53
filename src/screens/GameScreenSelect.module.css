@@ -1,0 +1,16 @@
+.rotationContainer {
+  /* top: 0; */
+  /* left: 0; */
+  background-color: brown;
+  position: absolute;
+  border: solid 5px pink;
+}
+
+.rotate {
+  -webkit-transform: rotate(-90deg); /* Safari and Chrome */
+  -moz-transform: rotate(-90deg); /* Firefox */
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -o-transform: rotate(-90deg); /* Opera */
+  transform: rotate(-90deg);
+  transform-origin: top left;
+}
