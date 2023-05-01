@@ -25,6 +25,7 @@ module.exports = {
     'import/extensions': 'off',
     'no-alert': 'warn',
     'react/jsx-no-useless-fragment': 'warn',
+    'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-use-before-define': ["error", { 'functions' : false , 'classes': false }],
