@@ -7,8 +7,18 @@ export function StartMenu() {
       <div className={styles.gameTitleContainer}>
         <div>PackageBots</div>
       </div>
-      <div className={styles.body}>
-        <Button>Tutorial</Button>
+      <div className={styles.bodyContainer}>
+        <div className={styles.body}>
+          <div className={styles.buttonContainer}>
+            <Button>Tutorial</Button>
+          </div>
+          <div className={styles.buttonContainer}>
+            <Button disabled>Campaign</Button>
+          </div>
+          <div className={styles.buttonContainer}>
+            <Button disabled>Sandbox</Button>
+          </div>
+        </div>
       </div>
     </div>
   );

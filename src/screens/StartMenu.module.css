@@ -24,7 +24,27 @@
   font-size: xx-large;
 }
 
-.body {
-  background-color: #555522;
+.bodyContainer {
   flex: 1;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  top: 40px;
+  height: calc(1 * (100% - 40px));
+  /* height: calc(0.25 * (100% - 40px)); */
+  position: relative;
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.buttonContainer button {
+  font-size: large;
 }
