@@ -1,0 +1,10 @@
+.button {
+  background-color: #111111;
+  border: solid 2px #888888;
+  border-radius: 6px;
+}
+
+.disabled {
+  border: solid 2px #333333;
+  color: #333333;
+}
