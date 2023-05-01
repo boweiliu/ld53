@@ -2,6 +2,7 @@ import { useState } from 'react';
 import classnames from 'classnames';
 import { RotationCheck } from '@/screens/RotationCheck';
 import { StartMenu } from '@/screens/StartMenu';
+import { PlayScreen } from '@/screens/play/PlayScreen';
 import { PauseMenu } from '@/screens/PauseMenu';
 import styles from './GameScreenSelect.module.css';
 import { FullscreenContext } from '@/hooks/useFullscreen';
@@ -34,7 +35,10 @@ export function GameScreenSelect(props: {
             top: isLandscape ? 0 : height,
           }}
         >
-          {screenState === 'startMenu' ? <StartMenu /> : null}
+          {screenState === 'startMenu' ? (
+            <StartMenu setScreenState={setScreenState} />
+          ) : null}
+          {screenState === 'play' ? <PlayScreen /> : null}
           {screenState === 'pauseMenu' ? <PauseMenu /> : null}
         </div>
       ) : null}

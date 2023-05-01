@@ -1,7 +1,8 @@
 import styles from './StartMenu.module.css';
 import { Button } from '@/components/Button';
 
-export function StartMenu() {
+export function StartMenu(props: { setScreenState: (s: string) => void }) {
+  const { setScreenState } = props;
   return (
     <div className={styles.startMenuContainer}>
       <div className={styles.gameTitleContainer}>
@@ -10,7 +11,13 @@ export function StartMenu() {
       <div className={styles.bodyContainer}>
         <div className={styles.body}>
           <div className={styles.buttonContainer}>
-            <Button>Tutorial</Button>
+            <Button
+              onClick={() => {
+                setScreenState('play');
+              }}
+            >
+              Tutorial
+            </Button>
           </div>
           <div className={styles.buttonContainer}>
             <Button disabled>Campaign</Button>
