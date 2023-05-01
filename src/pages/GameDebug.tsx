@@ -80,11 +80,6 @@ function GameDebug() {
       ref={ref}
       style={{
         backgroundColor: 'red',
-        // width: '100%',
-        // height: '100%',
-        // top: '0px',
-        // left: '0px',
-        // position: 'absolute',
       }}
     >
       <Button type="button" onClick={() => makeFullscreen()}>
