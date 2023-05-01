@@ -2,6 +2,7 @@ import { RefObject, useRef, useCallback, useState } from 'react';
 
 export interface FullscreenContext {
   isFullscreen: boolean;
+  supportsFullscreen: boolean;
   makeFullscreen: () => Promise<void>;
   clearFullscreen: () => Promise<void>;
   toggleFullscreen: () => Promise<void>;
@@ -15,6 +16,10 @@ export function useFullscreen(props: {
   const [isChangingFullscreen, setIsChangingFullscreen] =
     useState<boolean>(false);
   const [fullscreenError, setFullscreenError] = useState<Error | null>(null);
+
+  const supportsFullscreen =
+    window.document.fullscreenEnabled ||
+    (window.document as any).webkitFullscreenEnabled;
 
   const makeFullscreen = useCallback(() => {
     if (ref.current) {
@@ -49,5 +54,11 @@ export function useFullscreen(props: {
     return makeFullscreen();
   }, [clearFullscreen, makeFullscreen, isFullscreen]);
 
-  return { isFullscreen, makeFullscreen, clearFullscreen, toggleFullscreen };
+  return {
+    supportsFullscreen,
+    isFullscreen,
+    makeFullscreen,
+    clearFullscreen,
+    toggleFullscreen,
+  };
 }

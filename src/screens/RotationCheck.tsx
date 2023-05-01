@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import styles from './RotationCheck.module.css';
 import GameDebug from '@/pages/GameDebug';
 import { FullscreenContext } from '@/hooks/useFullscreen';
+import { Button } from '@/components/Button';
 
 export function RotationCheck(props: {
   size: { isLandscape: boolean };
@@ -17,14 +18,15 @@ export function RotationCheck(props: {
     <>
       <div className={styles.container}>
         Game runs best in fullscreen landscape!{' '}
-        <button
+        <Button
           type="button"
+          disabled={!fullscreenContext.supportsFullscreen}
           onClick={() => {
             fullscreenContext.toggleFullscreen().then(() => setSize());
           }}
         >
           Toggle fullscreen
-        </button>
+        </Button>
         <br />
         <br />
         Rotate your head now,
@@ -32,9 +34,9 @@ export function RotationCheck(props: {
         or rotate your device and refresh!
         <br />
         <br />
-        <button type="button" onClick={() => setSize()}>
+        <Button type="button" onClick={() => setSize()}>
           Got it, resize now please!
-        </button>
+        </Button>
         <br />
         <br />
         <div
@@ -43,9 +45,9 @@ export function RotationCheck(props: {
             size.isLandscape ? undefined : styles.rotated
           )}
         >
-          <button type="button" onClick={() => onStart()}>
+          <Button type="button" onClick={() => onStart()}>
             Start game!
-          </button>
+          </Button>
         </div>
         <div style={{ height: '12px' }} />
       </div>

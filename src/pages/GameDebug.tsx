@@ -1,4 +1,5 @@
 import { useRef, useCallback, useState } from 'react';
+import { Button } from '@/components/Button';
 
 function testSandbox() {
   // fetch? no - is blocked
@@ -86,12 +87,12 @@ function GameDebug() {
         // position: 'absolute',
       }}
     >
-      <button type="button" onClick={() => makeFullscreen()}>
+      <Button type="button" onClick={() => makeFullscreen()}>
         fullscreen
-      </button>
-      <button type="button" onClick={() => getInfo()}>
+      </Button>
+      <Button type="button" onClick={() => getInfo()}>
         get info
-      </button>
+      </Button>
       <h1>DEBUG</h1>
       <div style={{ textAlign: 'center' }}>centered text</div>
       <div

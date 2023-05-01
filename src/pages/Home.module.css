@@ -8,13 +8,6 @@
 }
 
 .home * {
-  color: #dddddd;
+  color: #dddddd; /* default text color */
   box-sizing: border-box;
-}
-
-/* wip until we get component */
-.home button {
-  background-color: #111111;
-  border: solid 2px #888888;
-  border-radius: 6px;
 }
