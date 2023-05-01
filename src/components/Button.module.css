@@ -4,7 +4,7 @@
   border-radius: 6px;
 }
 
-.disabled {
-  border: solid 2px #333333;
-  color: #333333;
+.button.disabled {
+  border: solid 1px #666666;
+  color: #666666;
 }
