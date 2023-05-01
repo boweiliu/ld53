@@ -4,7 +4,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: #222222;
+  background-color: #000000;
 }
 
 .home * {
@@ -12,6 +12,7 @@
   box-sizing: border-box;
 }
 
+/* wip until we get component */
 .home button {
   background-color: #111111;
   border: solid 2px #888888;

@@ -66,10 +66,10 @@ function getIsLandscape(): boolean {
  *   - fullscreen, mobile, landscape: not sure, but probably window size would work here.
  */
 export function useWindowSize() {
-  return { getWindowSize, ...getWindowSize() };
+  return { getWindowSize, ...getWindowSize(false) };
 }
 
-export function getWindowSize() {
+export function getWindowSize(isFullscreen: boolean) {
   const windowSize = { h: window.innerHeight, w: window.innerWidth };
   let screenSize = {
     h: Math.min(
@@ -88,6 +88,14 @@ export function getWindowSize() {
 
   const isLandscape = getIsLandscape();
 
+  const defaultResult = {
+    width: Math.min(windowSize.w, screenSize.w),
+    height: Math.min(windowSize.h, screenSize.h),
+    isLandscape,
+  } as const;
+  if (isFullscreen) {
+    return defaultResult;
+  }
   if (isIframe()) {
     if (isLandscape) {
       return {
@@ -103,9 +111,5 @@ export function getWindowSize() {
       isLandscape,
     };
   }
-  return {
-    width: Math.min(windowSize.w, screenSize.w),
-    height: Math.min(windowSize.h, screenSize.h),
-    isLandscape,
-  };
+  return defaultResult;
 }

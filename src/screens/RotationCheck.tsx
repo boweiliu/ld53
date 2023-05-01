@@ -2,21 +2,28 @@ import { useState } from 'react';
 import classnames from 'classnames';
 import styles from './RotationCheck.module.css';
 import GameDebug from '@/pages/GameDebug';
+import { FullscreenContext } from '@/hooks/useFullscreen';
 
 export function RotationCheck(props: {
   size: { isLandscape: boolean };
   setSize: () => void;
   onStart: () => void;
+  fullscreenContext: FullscreenContext;
 }) {
-  const { size, setSize, onStart } = props;
+  const { size, setSize, onStart, fullscreenContext } = props;
   const [screenState, setScreenState] = useState<number>(0);
 
   return (
     <>
       <div className={styles.container}>
         Game runs best in fullscreen landscape!{' '}
-        <button disabled type="button">
-          Go fullscreen
+        <button
+          type="button"
+          onClick={() => {
+            fullscreenContext.toggleFullscreen().then(() => setSize());
+          }}
+        >
+          Toggle fullscreen
         </button>
         <br />
         <br />
